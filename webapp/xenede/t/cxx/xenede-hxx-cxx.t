@@ -447,8 +447,8 @@
 %author,%(%else-then(%author%,%()%)%)%,%
 %Author,%(%else-then(%Author%,%(%author%)%)%)%,%
 %AUTHOR,%(%else-then(%AUTHOR%,%(%toupper(%Author%)%)%)%)%,%
-%date,%(%else-then(%date%,%(%date()%)%)%)%,%
-%Date,%(%else-then(%Date%,%(%date%)%)%)%,%
+%date,%(%else-then(%do(%date%)%,%(%date()%)%)%)%,%
+%Date,%(%else-then(%do(%Date%)%,%(%date%)%)%)%,%
 %DATE,%(%else-then(%DATE%,%(%toupper(%Date%)%)%)%)%,%
 %%(%
 %%if(%file%,%(%
