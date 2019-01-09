@@ -47,10 +47,15 @@
     <!--========================================================================-->
     <images>
         <image 
-         id="background"
+         id="bbackground"
          text_valign="top_center" 
          width="475" height="345" 
          location="../images/ada-lovelace-background.gif"/>
+         <image 
+          id="background"
+          text_valign="top_center" 
+          width="375" height="404" 
+          location="../images/gnuphone-folder-background.gif"/>
     </images>
     <!--========================================================================-->
     <!--                                                                        -->

@@ -19,6 +19,8 @@
 %#   Date: 4/25/2011
 %########################################################################
 %with(%
+%File,%(%else-then(%File%,%(%file%)%)%)%,%
+%FILE,%(%else-then(%FILE%,%(%toupper(%File%)%)%)%)%,%
 %%(%
 %%include(%filepath%/xenede-xml-version.t)%%
 %%with(filepath,%(%filepath%/..)%,%(%
