@@ -27,7 +27,7 @@
 %Extend_base,%(%else-then(%Extend_base%,%(base)%)%)%,%
 %Name_implement,%(%else-then(%Name_implement%,%(%Name%_implement)%)%)%,%
 %Name_extend,%(%else-then(%Name_extend%,%(%Name%_extend)%)%)%,%
-%Implements,%(%else-then(%if-no(%is_implements%,,%else-then(%Implements%,%(%implements%)%)%)%,%(%if-no(%is_implements%,,%Name_implement%)%)%)%)%,%
+%Implements,%(%else-then(%if-no(%is_implements%,,%else-then(%Implements%,%(%implements%)%)%)%,%(%if-no(%is_implements%,,%Implement_base%)%)%)%)%,%
 %Extends,%(%else-then(%if-no(%is_extends%,,%else-then(%Extends%,%(%extends%)%)%)%,%(%if-no(%is_extends%,,%Extend_base%)%)%)%)%,%
 %Namet,%(%else-then(%Namet%,%(%Name%t)%)%)%,%
 %Implementst,%(%else-then(%Implementst%,%(%Implements%t)%)%)%,%

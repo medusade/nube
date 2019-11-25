@@ -1,5 +1,5 @@
 %########################################################################
-%# Copyright (c) 1988-2018 $organization$
+%# Copyright (c) 1988-2019 $organization$
 %#
 %# This software is provided by the author and contributors ``as is'' 
 %# and any express or implied warranties, including, but not limited to, 
@@ -13,22 +13,27 @@
 %# or otherwise) arising in any way out of the use of this software, 
 %# even if advised of the possibility of such damage.
 %#
-%#   File: class-cpp-cpp.t
+%#   File: framework-os-app-QtCreator-pro-config.t
 %#
 %# Author: $author$
-%#   Date: 5/10/2018
+%#   Date: 7/18/2019
 %########################################################################
 %with(%
+%include_path,%(%else-then(%include_path%,%(%filepath(%input%)%)%)%)%,%
+%framework,%(%else-then(%framework%,%(framework)%)%)%,%
+%Framework,%(%else-then(%Framework%,%(%framework%)%)%)%,%
+%FRAMEWORK,%(%else-then(%FRAMEWORK%,%(%toupper(%Framework%)%)%)%)%,%
+%framework,%(%else-then(%_Framework%,%(%tolower(%Framework%)%)%)%)%,%
+%target,%(%else-then(%target%,%(%Framework%)%)%)%,%
+%Target,%(%else-then(%Target%,%(%target%)%)%)%,%
+%TARGET,%(%else-then(%TARGET%,%(%toupper(%Target%)%)%)%)%,%
+%target,%(%else-then(%_Target%,%(%tolower(%Target%)%)%)%)%,%
+%os,%(%else-then(%os%,%(os)%)%)%,%
+%Os,%(%else-then(%Os%,%(%else-then(%Os2%,%(%os%)%)%)%)%)%,%
+%OS,%(%else-then(%OS%,%(%toupper(%Os%)%)%)%)%,%
+%os,%(%else-then(%_Os%,%(%tolower(%Os%)%)%)%)%,%
 %%(%
-%%include(%filepath(%input%)%/file-begin-%Extension%.t)%%
-%%Namespace_begin%%
-%%if(%Implements%%Extends%,%(%
-%%if-then(%Namet_comment%,
-)%%
-%)%,%(%
-%%if-then(%Name_comment%,
-)%%
-%)%)%%
-%%Namespace_end%%
+%%Framework%/build/%os%/QtCreator/Debug/bin/%Target%
+%Framework%/build/%os%/QtCreator/Release/bin/%Target%
 %
-%)%)%
+%)%)%%

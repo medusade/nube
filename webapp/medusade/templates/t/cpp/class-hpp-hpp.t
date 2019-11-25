@@ -26,15 +26,7 @@
 )%,Include)%,
 )%%
 %%Namespace_begin%%
-%%if-no(%is_name%,,%(%if(%Extends%,%(%if(%Implements%,%(typedef %Implement_base% %Implementst_implements%;
-%Implementst_comment%template <class TImplements = %Implementst_implements%>
-class %_EXPORT_CLASS% %Implementst%: virtual public TImplements {
-public:
-    typedef TImplements %cImplements%;
-};
-typedef %Implementst%<> %Implements%;
-
-)%)%%if(%Implements%,%(typedef %Implements% %Namet_implements%;
+%%if-no(%is_name%,,%(%if(%Extends%,%(%if(%Implements%,%(typedef %Implements% %Namet_implements%;
 )%)%typedef %Extends% %Namet_extends%;
 %Namet_comment%template <%if(%Implements%,%(class TImplements = %Namet_implements%, )%)%class TExtends = %Namet_extends%>
 class %_EXPORT_CLASS% %Namet%: %if(%Implements%,%(virtual public TImplements, )%)%public TExtends {
@@ -68,6 +60,8 @@ public:
 typedef %Namet%<> %Name%;
 )%,%(%Name_comment%class %_EXPORT_CLASS% %Name% {
 public:
+    typedef %Name% %cDerives%;
+
     %Name%(const %Name% &copy) {
     }
     %Name%() {

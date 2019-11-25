@@ -103,6 +103,10 @@ build_%Depends%_INCLUDEPATH += \
 #
 build_%Depends%_DEFINES += \
 
+# build %Depends% FRAMEWORKS
+#
+build_%Depends%_FRAMEWORKS += \
+
 # build %Depends% LIBS
 #
 build_%Depends%_LIBS += \
@@ -125,6 +129,14 @@ build_%Framework%_DEFINES += \
 %parse(%Depends%,;,,,,%(%
 %%with(%
 %%($${build_%Depends%_DEFINES} \
+)%)%)%,Depends)%
+
+# build %Framework% FRAMEWORKS
+#
+build_%Framework%_FRAMEWORKS += \
+%reverse-parse(%Depends%,;,,,,%(%
+%%with(%
+%%($${build_%Depends%_FRAMEWORKS} \
 )%)%)%,Depends)%
 
 # build %Framework% LIBS

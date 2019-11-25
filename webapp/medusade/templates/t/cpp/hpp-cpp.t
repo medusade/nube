@@ -100,18 +100,18 @@
 %c_NAMESPACE,%(%else-then(%c_NAMESPACE%,%(%c_namespace%)%)%)%,%
 %C_NAMESPACE,%(%else-then(%C_NAMESPACE%,%(%toupper(%c_NAMESPACE%)%)%)%)%,%
 %c_namespace,%(%else-then(%_c_NAMESPACE%,%(%tolower(%c_NAMESPACE%)%)%)%)%,%
-%cnamespace_begin,%(%else-then(%cnamespace_begin%,%(#if defined(%c_NAMESPACE%)
+%cnamespace_begin,%(%else-then(%cnamespace_begin%,%if-no(%is_namespace%,,%(#if defined(%c_NAMESPACE%)
 namespace %c_NAMESPACE% {
 #endif /* defined(%c_NAMESPACE%) */
-)%)%)%,%
+)%)%)%)%,%
 %CNamespace_begin,%(%else-then(%CNamespace_begin%,%(%cnamespace_begin%)%)%)%,%
 %CNAMESPACE_BEGIN,%(%else-then(%CNAMESPACE_BEGIN%,%(%toupper(%CNamespace_begin%)%)%)%)%,%
 %cnamespace_begin,%(%else-then(%_CNamespace_begin%,%(%tolower(%CNamespace_begin%)%)%)%)%,%
-%cnamespace_end,%(%else-then(%cnamespace_end%,%(
+%cnamespace_end,%(%else-then(%cnamespace_end%,%if-no(%is_namespace%,,%(
 #if defined(%c_NAMESPACE%)
 } /* namespace %c_NAMESPACE% */
 #endif /* defined(%c_NAMESPACE%) */
-)%)%)%,%
+)%)%)%)%,%
 %CNamespace_end,%(%else-then(%CNamespace_end%,%(%cnamespace_end%)%)%)%,%
 %CNAMESPACE_END,%(%else-then(%CNAMESPACE_END%,%(%toupper(%CNamespace_end%)%)%)%)%,%
 %cnamespace_end,%(%else-then(%_CNamespace_end%,%(%tolower(%CNamespace_end%)%)%)%)%,%

@@ -1,5 +1,5 @@
 %########################################################################
-%# Copyright (c) 1988-2017 $organization$
+%# Copyright (c) 1988-2019 $organization$
 %#
 %# This software is provided by the author and contributors ``as is'' 
 %# and any express or implied warranties, including, but not limited to, 
@@ -13,10 +13,10 @@
 %# or otherwise) arising in any way out of the use of this software, 
 %# even if advised of the possibility of such damage.
 %#
-%#   File: framework-os-QtCreator-pri.t
+%#   File: framework-depends-QtCreator-pri.t
 %#
 %# Author: $author$
-%#   Date: 9/2/2017
+%#   Date: 7/19/2019
 %########################################################################
 %with(%
 %filepath,%(%else-then(%filepath%,%(%filepath(%input%)%)%)%)%,%
@@ -47,19 +47,19 @@
 %Day,%(%else-then(%Day%,%(%day%)%)%)%,%
 %DAY,%(%else-then(%DAY%,%(%toupper(%Day%)%)%)%)%,%
 %day,%(%else-then(%_Day%,%(%tolower(%Day%)%)%)%)%,%
-%depends,%(%else-then(%depends%,%()%)%)%,%
-%Depends,%(%else-then(%Depends%,%(%depends%)%)%)%,%
-%DEPENDS,%(%else-then(%DEPENDS%,%(%toupper(%Depends%)%)%)%)%,%
-%depends,%(%else-then(%_Depends%,%(%tolower(%Depends%)%)%)%)%,%
 %framework,%(%else-then(%framework%,%(framework)%)%)%,%
 %Framework,%(%else-then(%Framework%,%(%framework%)%)%)%,%
 %FRAMEWORK,%(%else-then(%FRAMEWORK%,%(%toupper(%Framework%)%)%)%)%,%
 %framework,%(%else-then(%_Framework%,%(%tolower(%Framework%)%)%)%)%,%
+%depends,%(%else-then(%depends%,%(%framework%)%)%)%,%
+%Depends,%(%else-then(%Depends%,%(%depends%)%)%)%,%
+%DEPENDS,%(%else-then(%DEPENDS%,%(%toupper(%Depends%)%)%)%)%,%
+%depends,%(%else-then(%_Depends%,%(%tolower(%Depends%)%)%)%)%,%
 %target,%(%else-then(%target%,%()%)%)%,%
 %Target,%(%else-then(%Target%,%(%target%)%)%)%,%
 %TARGET,%(%else-then(%TARGET%,%(%toupper(%Target%)%)%)%)%,%
 %target,%(%else-then(%_Target%,%(%tolower(%Target%)%)%)%)%,%
-%os,%(%else-then(%os%,%(%else-no(%IsOs%,%(Linux)%,%(Os)%)%)%)%)%,%
+%os,%(%else-then(%os%,%()%)%)%,%
 %Os,%(%else-then(%Os%,%(%os%)%)%)%,%
 %OS,%(%else-then(%OS%,%(%toupper(%Os%)%)%)%)%,%
 %os,%(%else-then(%_Os%,%(%tolower(%Os%)%)%)%)%,%
@@ -79,88 +79,38 @@
 %File,%(%else-then(%File%,%(%file%)%)%)%,%
 %FILE,%(%else-then(%FILE%,%(%toupper(%File%)%)%)%)%,%
 %file,%(%else-then(%_File%,%(%tolower(%File%)%)%)%)%,%
-%title,%(%else-then(%title%,%(%if-then(%Os%, )%%Makefile%%then-if(%if-then(%Extension%, file)%, .)%%then-if(%Framework%, for )%)%)%)%,%
+%title,%(%else-then(%title%,%(build %Makefile%%then-if(%if-then(%Extension%, file)%, .)%%then-if(%Framework%, for )%)%)%)%,%
 %Title,%(%else-then(%Title%,%(%title%)%)%)%,%
 %TITLE,%(%else-then(%TITLE%,%(%toupper(%Title%)%)%)%)%,%
 %title,%(%else-then(%_Title%,%(%tolower(%Title%)%)%)%)%,%
 %%(%
 %%include(%Filepath%/QtCreator-file.t)%%
-%%if-no(%IsOs%,%(UNAME = $$system(uname)
-
-contains(UNAME,Windows) {
-%FRAMEWORK%_OS = windows
-} else {
-contains(UNAME,Darwin) {
-%FRAMEWORK%_OS = macosx
-} else {
-%FRAMEWORK%_OS = linux
-}
-}
-
-contains(%FRAMEWORK%_OS,os) {
-%FRAMEWORK%_BUILD = os
-} else {
-%FRAMEWORK%_BUILD = $${%FRAMEWORK%_OS}
-}
-)%,%(%FRAMEWORK%_OS = %os%)%)%
-#CONFIG += c++11
-#CONFIG += c++0x
-
+%
 %parse(%Depends%,;,,,,%(%
 %%with(%
-%DEPENDS,%(%else-then(%_DEPENDS%,%(%toupper(%Depends%)%)%)%)%,%
-%%(########################################################################
+%%(%
+%########################################################################
 # %Depends%
-%DEPENDS%_THIRDPARTY_PKG_MAKE_BLD = $${%DEPENDS%_THIRDPARTY_PKG}/build/$${%FRAMEWORK%_BUILD}/$${BUILD_CONFIG}
-%DEPENDS%_THIRDPARTY_PRJ_MAKE_BLD = $${%DEPENDS%_THIRDPARTY_PRJ}/build/$${%FRAMEWORK%_BUILD}/$${BUILD_CONFIG}
-%DEPENDS%_THIRDPARTY_PKG_BLD = $${%DEPENDS%_THIRDPARTY_PKG}/build/$${%FRAMEWORK%_BUILD}/QtCreator/$${BUILD_CONFIG}
-%DEPENDS%_THIRDPARTY_PRJ_BLD = $${%DEPENDS%_THIRDPARTY_PRJ}/build/$${%FRAMEWORK%_BUILD}/QtCreator/$${BUILD_CONFIG}
-%DEPENDS%_PKG_BLD = $${OTHER_BLD}/$${%DEPENDS%_PKG}/build/$${%FRAMEWORK%_BUILD}/QtCreator/$${BUILD_CONFIG}
-%DEPENDS%_PRJ_BLD = $${OTHER_BLD}/$${%DEPENDS%_PRJ}/build/$${%FRAMEWORK%_BUILD}/QtCreator/$${BUILD_CONFIG}
-#%DEPENDS%_LIB = $${%DEPENDS%_THIRDPARTY_PKG_MAKE_BLD}/lib
-#%DEPENDS%_LIB = $${%DEPENDS%_THIRDPARTY_PRJ_MAKE_BLD}/lib
-#%DEPENDS%_LIB = $${%DEPENDS%_THIRDPARTY_PKG_BLD}/lib
-#%DEPENDS%_LIB = $${%DEPENDS%_THIRDPARTY_PRJ_BLD}/lib
-#%DEPENDS%_LIB = $${%DEPENDS%_PKG_BLD}/lib
-%DEPENDS%_LIB = $${%DEPENDS%_PRJ_BLD}/lib
-#%DEPENDS%_LIB = $${%FRAMEWORK%_LIB}
-
-# %Depends% LIBS
 #
-%Depends%_LIBS += \
--L$${%DEPENDS%_LIB}/lib$${%DEPENDS%_NAME} \
--l$${%DEPENDS%_NAME} \
+# pkg-config --cflags --libs %Depends%
+#
+
+# build %Depends% INCLUDEPATH
+#
+build_%Depends%_INCLUDEPATH += \
+
+# build %Depends% DEFINES
+#
+build_%Depends%_DEFINES += \
+
+# build %Depends% FRAMEWORKS
+#
+build_%Depends%_FRAMEWORKS += \
+
+# build %Depends% LIBS
+#
+build_%Depends%_LIBS += \
 
 )%)%)%,Depends)%%
-%########################################################################
-# %Framework%
-
-# %Framework% INCLUDEPATH
-#
-%Framework%_INCLUDEPATH += \
-
-# %Framework% DEFINES
-#
-%Framework%_DEFINES += \
-
-# %Framework% LIBS
-#
-%Framework%_LIBS += \
-%reverse-parse(%Depends%,;,,,,%(%
-%%with(%
-%DEPENDS,%(%else-then(%_DEPENDS%,%(%toupper(%Depends%)%)%)%)%,%
-%%($${%Depends%_LIBS} \
-)%)%%
-%)%,Depends)%%
-%$${build_%Framework%_LIBS} \
--lpthread \
--ldl \
-%if-no(%IsOs%,%(
-contains(%FRAMEWORK%_OS,linux) {
-%Framework%_LIBS += \
--lrt
-} else {
-})%,%(%else(%equal(macosx,%os%)%,-lrt)%)%)%
-
 %
-%)%)%
+%)%)%%
