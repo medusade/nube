@@ -103,9 +103,81 @@
         === form
         =====================================================================
         -->
-        <form name="Form" method="POST" action=".."
+        <form name="Form" method="POST" action="../templates/t/cxx/hxx-cxx.t"
          onSubmit="return setFormSubmit(getFormValue2('FormTemplate','FormAction','Form'),getFormValue('FormMethod','Form'),'Form')">
             <div class="form">
+
+                File: <input name="File" value=""/>
+                <input type="checkbox" name="is_File" value="no" unchecked="">no</input>
+                <input type="radio" name="extension" value="hpp" checked="checked">.hpp</input>
+                <input type="radio" name="extension" value="cpp">.cpp</input>
+                <input type="radio" name="extension" value="hxx">.hxx</input>
+                <input type="radio" name="extension" value="cxx">.cxx</input>
+                <input type="radio" name="extension" value="hh">.hh</input>
+                <input type="radio" name="extension" value="cc">.cc</input>
+                <input type="radio" name="extension" value="mm">.mm</input>
+                <input type="radio" name="extension" value="h">.h</input>
+                <input type="radio" name="extension" value="c">.c</input>
+                <input type="radio" name="extension" value="m">.m</input>
+                <input type="checkbox" name="is_lowercase_file" value="yes" unchecked="">lowercase</input>
+                <br/>
+                Template: <select name="FormTemplate">
+                <option value="../templates/t/cxx/class-hxx-cxx.t">C++ class</option>
+                <option value="../templates/t/cxx/hxx-cxx.t">C/C++ file</option>
+                <option value=""></option>
+                <option value="../templates/t/t/parameters.t">parameters</option>
+                <option value=""></option>
+                <option value="/medusade-cgi/cgi">cgi parameters</option>
+                <option value="/medusade-cgi/cgicatch">catch cgi parameters</option>
+                <option value=""></option>
+                <option value="/medusade-http/http">http parameters</option>
+                <option value="/medusade-http/httpcatch">catch http parameters</option>
+                </select><br/>
+
+                <br/>
+                <b>#ifndef </b><input name="Ifndef" value="xos/base"/><b></b>
+                <input type="checkbox" name="is_Ifndef" value="no" unchecked=""/>no<br/>
+                <b>#include "</b><input name="Include" value="xos/base/base.hpp"/><b>"</b>
+                <input type="checkbox" name="is_Include" value="no" unchecked=""/>no<br/>
+                <b>#include &lt;</b><input name="Sys_include" value="stdio.h"/><b>&gt;</b>
+                <input type="checkbox" name="is_Sys_include" value="no" unchecked=""/>no<br/>
+
+                <br/>
+                <b>namespace</b> <input name="Namespace" value="xos"/> <b>{</b>
+                <input type="checkbox" name="is_Namespace" value="no" unchecked=""/>no<br/>
+
+                <b>template &lt;</b> <input name="Template" value=""/><b>&gt;</b>
+                <input type="checkbox" name="is_Template" value="no" unchecked=""/>no<br/>
+                <b>class</b> <input name="Name" value="derive"/>
+                <input type="checkbox" name="is_Name" value="no" unchecked=""/>no<br/>
+                <b>: virtual public</b> <input name="Implements" value="implement"/>
+                <input type="checkbox" name="is_Implements" value="no" unchecked=""/>no<br/>
+                <b>, public</b> <input name="Extends" value="extend"/><b> {</b>
+                <input type="checkbox" name="is_Extends" value="no" unchecked=""/>no<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<b>private: </b>
+                <input type="checkbox" name="Private_copy_constructor" value="yes" unchecked=""/>
+                <b>explicit </b>
+                <input type="checkbox" name="Explicit_copy_constructor" value="yes" unchecked=""/>
+                <b>(const </b><b>&amp;</b>copy<b>) {}</b>
+                <input type="checkbox" name="is_Copy_constructor" value="no" unchecked=""/>no
+                <input type="hidden" name="Copy_constructor" value=""/><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<b>private: </b>
+                <input type="checkbox" name="Private_constructor" value="yes" unchecked=""/>
+                <b>explicit </b>
+                <input type="checkbox" name="Explicit_constructor" value="yes" unchecked=""/>
+                <b>(</b><b>) {}</b>
+                <input type="checkbox" name="is_Constructor" value="no" unchecked=""/>no
+                <input type="hidden" name="Constructor" value=""/><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<b>private: </b>
+                <input type="checkbox" name="Private_destructor" value="yes" unchecked=""/>
+                <b>virtual </b>
+                <input type="checkbox" name="Virtual_destructor" value="yes" checked="checked"/>
+                <b>~</b><b>(</b><b>) {}</b>
+                <input type="checkbox" name="is_Destructor" value="no" unchecked=""/>no
+                <input type="hidden" name="Destructor" value=""/><br>
+                <b>}; /// class</b><br/>
+
+                <b>} /// namespace</b><br/>
 
                 <br/>
                 Content-Type: <select name="content_type">
@@ -117,10 +189,13 @@
                 <option value=""></option>
                 </select><br/>
                 Action: <select name="FormAction">
-                <option value="..">Create C/C++ File</option>
+                <option value="../templates/t/cxx/hxx-cxx.t">C/C++ file</option>
                 <option value=""></option>
-                <option value="/sthenode-cgi/cgi">cgi parameters</option>
-                <option value="/sthenode-cgi/cgicatch">catch cgi parameters</option>
+                <option value="/medusade-cgi/cgi">cgi parameters</option>
+                <option value="/medusade-cgi/cgicatch">catch cgi parameters</option>
+                <option value=""></option>
+                <option value="/medusade-http/http">http parameters</option>
+                <option value="/medusade-http/httpcatch">catch http parameters</option>
                 </select><br/>
                 Method: <select name="FormMethod">
                 <option value="POST">POST</option>

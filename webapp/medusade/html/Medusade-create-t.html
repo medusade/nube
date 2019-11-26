@@ -86,10 +86,11 @@
         =====================================================================
         -->
         <ul class="menubar">
-            <li><a location="Medusade-create-t.html" onclick="onItemClick(event,'myDropdown')">Create .t File</a></li>
-            <li><a location="Medusade-create-html.html" onclick="onItemClick(event,'myDropdown')">Create .html File</a></li>
-            <li><a location="Medusade-create-makefile.html" onclick="onItemClick(event,'myDropdown')">Create Makefile Project</a></li>
-            <li><a location="Medusade-create-qtcreator.html" onclick="onItemClick(event)">Create Qtcreator Project</a></li>
+            <li><a href="Medusade-create-t.html" onclick="onItemClick(event,'myDropdown')">Create .t File</a></li>
+            <li><a href="Medusade-create-html.html" onclick="onItemClick(event,'myDropdown')">Create .html File</a></li>
+            <li><a href="Medusade-create-makefile.html" onclick="onItemClick(event,'myDropdown')">Create Makefile Project</a></li>
+            <li><a href="Medusade-create-qtcreator.html" onclick="onItemClick(event)">Create Qtcreator Project</a></li>
+            <li><a href="Medusade-home.html" onclick="onItemClick(event)">Home</a></li>
         </ul>
         <!--
         =====================================================================
@@ -120,6 +121,11 @@
                     <option value="/medusade-http/httpcatch">catch http parameters</option>
                 </select>
                 <input type="checkbox" name="is_FoprmTemplate" value="no" unchecked="checked">no</input><br>
+                <br/>
+                Include: <input name="Include" value=""></input>
+                <input type="checkbox" name="is_Include" value="no" unchecked="checked">no</input><br>
+                Parameters: <input name="Parameters" value=""></input>
+                <input type="checkbox" name="is_Parameters" value="no" unchecked="checked">no</input><br>
 
                 <br/>
                 Content-Type: <select name="content_type">

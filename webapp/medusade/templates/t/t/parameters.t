@@ -13,23 +13,18 @@
 %# or otherwise) arising in any way out of the use of this software, 
 %# even if advised of the possibility of such damage.
 %#
-%#   File: t.t
+%#   File: parameters.t
 %#
 %# Author: $author$
-%#   Date: 11/25/2019
+%#   Date: 11/26/2019
 %########################################################################
 %with(%
 %include_path,%(%else-then(%include_path%,%(%filepath(%input%)%)%)%)%,%
-%is_include,%(%else-then(%is_include%,%(%is_Include%)%)%)%,%
-%include,%(%else-then(%if-no(%is_include%,,%(%include%)%)%,%(%if-no(%is_include%,,%()%)%)%)%)%,%
-%Include,%(%else-then(%if-no(%is_include%,,%(%Include%)%)%,%(%if-no(%is_include%,,%(%include%)%)%)%)%)%,%
-%INCLUDE,%(%else-then(%INCLUDE%,%(%toupper(%Include%)%)%)%)%,%
-%include,%(%else-then(%_Include%,%(%tolower(%Include%)%)%)%)%,%
+%is_parameters,%(%else-then(%is_parameters%,%(%is_Parameters%)%)%)%,%
+%parameters,%(%else-then(%if-no(%is_parameters%,,%(%parameters%)%)%,%(%if-no(%is_parameters%,,%(%parameters(,,;,,%(%name%%then-if(%value%,=)%)%,name,value)%)%)%)%)%)%,%
+%Parameters,%(%else-then(%if-no(%is_parameters%,,%(%Parameters%)%)%,%(%parameters%)%)%)%,%
+%PARAMETERS,%(%else-then(%PARAMETERS%,%(%toupper(%Parameters%)%)%)%)%,%
+%parameters,%(%else-then(%_Parameters%,%(%tolower(%Parameters%)%)%)%)%,%
 %%(%
-%%include(%include_path%/t-file.t)%%
-%%%with%(()%%%
-%%include_path,%%%(()%%%else-then%(()%%%include_path%%,%%%(()%%%filepath%(()%%%input%%%())%%%%())%%%%())%%%%())%%%%(,)%%%
-%include(%include_path%/t-parameters.t)%%%%%%(()%%%
-%if(%Include%,%(%%%%include%(()%%%include_path%%%then-if(%Include%,/)%%())%%%%%
-)%)%%%%())%%%%())%%%%
+%%include(%include_path%/t-parameters.t)%%
 %)%)%

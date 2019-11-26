@@ -86,11 +86,11 @@
         =====================================================================
         -->
         <ul class="menubar">
-            <li><a location="Medusade-create-html.html" onclick="onItemClick(event,'myDropdown')">Create .html File</a></li>
-            <li><a location="Medusade-create-makefile.html" onclick="onItemClick(event,'myDropdown')">Create Makefile Project</a></li>
-            <li><a location="Medusade-create-qtcreator.html" onclick="onItemClick(event)">Create Qtcreator Project</a></li>
-            <li><a location="Medusade-create-t.html" onclick="onItemClick(event)">Create .t file</a></li>
-            <li><a location="Medusade-create-t.html" onclick="onItemClick(event)">Create .t file</a></li>
+            <li><a href="Medusade-create-html.html" onclick="onItemClick(event,'myDropdown')">Create .html File</a></li>
+            <li><a href="Medusade-create-makefile.html" onclick="onItemClick(event,'myDropdown')">Create Makefile Project</a></li>
+            <li><a href="Medusade-create-qtcreator.html" onclick="onItemClick(event)">Create Qtcreator Project</a></li>
+            <li><a href="Medusade-create-t.html" onclick="onItemClick(event)">Create .t file</a></li>
+            <li><a href="Medusade-create-t.html" onclick="onItemClick(event)">Create .t file</a></li>
         </ul>
         <!--
         =====================================================================
@@ -106,9 +106,21 @@
         === form
         =====================================================================
         -->
-        <form name="Form" method="POST" action=".."
+        <form name="Form" method="POST" action="../templates/t/html/html.t"
          onSubmit="return setFormSubmit(getFormValue2('FormTemplate','FormAction','Form'),getFormValue('FormMethod','Form'),'Form')">
             <div class="form">
+                File: <input name="Name" value="html"></input>
+                <input type="checkbox" name="is_Name" value="no" unchecked="checked">no</input><br>
+                Template: <select name="FormTemplate">
+                    <option value="../templates/t/html/html.t">Create .html File</option>
+                    <option value=""></option>
+                    <option value="/medusade-cgi/cgi">cgi parameters</option>
+                    <option value="/medusade-cgi/cgicatch">catch cgi parameters</option>
+                    <option value=""></option>
+                    <option value="/medusade-http/http">http parameters</option>
+                    <option value="/medusade-http/httpcatch">catch http parameters</option>
+                </select>
+                <input type="checkbox" name="is_FoprmTemplate" value="no" unchecked="checked">no</input><br>
 
                 <br/>
                 Content-Type: <select name="content_type">
@@ -120,7 +132,7 @@
                 <option value=""></option>
                 </select><br/>
                 Action: <select name="FormAction">
-                <option value="..">Create .html File</option>
+                <option value="../templates/t/html/html.t">Create .html File</option>
                 <option value=""></option>
                 <option value="/sthenode-cgi/cgi">cgi parameters</option>
                 <option value="/sthenode-cgi/cgicatch">catch cgi parameters</option>

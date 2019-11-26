@@ -13,23 +13,22 @@
 %# or otherwise) arising in any way out of the use of this software, 
 %# even if advised of the possibility of such damage.
 %#
-%#   File: t.t
+%#   File: hpp-hpp.t
 %#
 %# Author: $author$
-%#   Date: 11/25/2019
+%#   Date: 11/26/2019
 %########################################################################
 %with(%
 %include_path,%(%else-then(%include_path%,%(%filepath(%input%)%)%)%)%,%
-%is_include,%(%else-then(%is_include%,%(%is_Include%)%)%)%,%
-%include,%(%else-then(%if-no(%is_include%,,%(%include%)%)%,%(%if-no(%is_include%,,%()%)%)%)%)%,%
-%Include,%(%else-then(%if-no(%is_include%,,%(%Include%)%)%,%(%if-no(%is_include%,,%(%include%)%)%)%)%)%,%
-%INCLUDE,%(%else-then(%INCLUDE%,%(%toupper(%Include%)%)%)%)%,%
-%include,%(%else-then(%_Include%,%(%tolower(%Include%)%)%)%)%,%
 %%(%
-%%include(%include_path%/t-file.t)%%
-%%%with%(()%%%
-%%include_path,%%%(()%%%else-then%(()%%%include_path%%,%%%(()%%%filepath%(()%%%input%%%())%%%%())%%%%())%%%%())%%%%(,)%%%
-%include(%include_path%/t-parameters.t)%%%%%%(()%%%
-%if(%Include%,%(%%%%include%(()%%%include_path%%%then-if(%Include%,/)%%())%%%%%
-)%)%%%%())%%%%())%%%%
+%%Ifndef_begin%%
+%%then-if(%Includes%%Sys_includes%,
+)%%
+%%then-if(%Namespace_begin%,
+)%%
+%%include(%include_path%/%Prefix%hpp.t)%%
+%%then-if(%Namespace_end%,
+)%%
+%%then-if(%Ifndef_end%,
+)%%
 %)%)%
