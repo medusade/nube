@@ -43,6 +43,7 @@
     margin: auto;
     padding: 0px 0px 0px 0px;
     border-spacing: 0px 0px 0px 0px;
+    cursor: pointer;
 }
 .body-logo-icon-image { 
     background-image: url('../images/jpeg/Medusa_Rondanini.jpg');

@@ -15,10 +15,10 @@
 === or otherwise) arising in any way out of the use of this software, 
 === even if advised of the possibility of such damage.
 ===
-===   File: Medusade-create-qtcreator.html
+===   File: Medusade-create-css.html
 ===
 === Author: $author$
-===   Date: 11/24/2019
+===   Date: 11/27/2019
 =====================================================================
 -->
 <html>
@@ -33,7 +33,7 @@
         === title
         =====================================================================
         -->
-        <title>Medusade - Create QtCreator Project</title>
+        <title>Medusade - Create .css File</title>
     
         <!--
         =====================================================================
@@ -55,7 +55,6 @@
         -->
         <script type="text/javascript" src="../js/Medusade.js"></script>
         <script type="text/javascript">
-            onLocationInit('Medusade-home.html', 'Medusade-create-qtcreator.html');
         </script>
     </head>
     <!--
@@ -86,35 +85,46 @@
         =====================================================================
         -->
         <ul class="menubar">
-            <li><a location="Medusade-create-qtcreator.html" onclick="onItemClick(event)">Create Qtcreator Project</a></li>
-            <li><a location="Medusade-create-makefile.html" onclick="onItemClick(event)">Create Makefile project</a></li>
-            <li><a location="Medusade-create-html.html" onclick="onItemClick(event)">Create .html file</a></li>
-            <li><a location="Medusade-create-t.html" onclick="onItemClick(event)">Create .t file</a></li>
+            <li><a href="Medusade-create-css.html" onclick="onItemClick(event,'myDropdown')">Create .css file</a></li>
+            <li><a href="Medusade-create-html.html" onclick="onItemClick(event,'myDropdown')">Create .html File</a></li>
+            <li><a href="Medusade-create-js.html" onclick="onItemClick(event)">Create .js file</a></li>
+            <li><a href="Medusade-create-xml.html" onclick="onItemClick(event,'myDropdown')">Create .xml File</a></li>
+            <li><a href="Medusade-create-xslt.html" onclick="onItemClick(event,'myDropdown')">Create .xslt File</a></li>
+            <li><a href="Medusade-create-t.html" onclick="onItemClick(event)">Create .t file</a></li>
+            <li><a href="Medusade-home.html" onclick="onItemClick(event)">Home</a></li>
         </ul>
         <!--
         =====================================================================
         === logo
         =====================================================================
         -->
-        <table class="body-logo">
-            <tr><td>
-                <table class="body-logo-icon" onclick="onClickSelfLocation(event)">
-                    <tr><td class="body-logo-icon-image">
-                        <table class="body-logo-label">
-                            <tr><td class="body-logo-label-text">MEDUSA</td></tr>
-                        </table>
-                    </td></tr>
-                </table>
-            </td></tr>
-        </table>
+        <div id="includeLogo" include="Medusade-body-logo.html">
+            <script>includeHTML('includeLogo');</script>
+        </div>
         <!--
         =====================================================================
         === form
         =====================================================================
         -->
-        <form name="Form" method="POST" action="../templates/t/qtcreator/qtcreator-pro.t"
+        <form name="Form" method="POST" action="../templates/t/css/css.t"
          onSubmit="return setFormSubmit(getFormValue2('FormTemplate','FormAction','Form'),getFormValue('FormMethod','Form'),'Form')">
             <div class="form">
+
+                File: <input name="Name" value="css"></input>
+                <input type="checkbox" name="is_Name" value="no" unchecked="checked">no</input><br>
+                Template: <select name="FormTemplate">
+                    <option value="../templates/t/css/css.t">Create .css File</option>
+                    <option value=""></option>
+                    <option value="/medusade-cgi/cgi">cgi parameters</option>
+                    <option value="/medusade-cgi/cgicatch">catch cgi parameters</option>
+                    <option value=""></option>
+                    <option value="/medusade-http/http">http parameters</option>
+                    <option value="/medusade-http/httpcatch">catch http parameters</option>
+                    <option value=""></option>
+                    <option value="../templates/t/t/parameters.t">t parameters</option>
+                    <option value="../templates/t/t/functions.t">t functions</option>
+                </select>
+                <input type="checkbox" name="is_FormTemplate" value="no" unchecked="checked">no</input><br>
 
                 <br/>
                 Content-Type: <select name="content_type">
@@ -126,17 +136,23 @@
                 <option value=""></option>
                 </select><br/>
                 Action: <select name="FormAction">
-                <option value="../templates/t/qtcreator/qtcreator-pro.t">Create QtCreator Project</option>
+                <option value="../templates/t/css/css.t">Create .css File</option>
                 <option value=""></option>
                 <option value="/medusade-cgi/cgi">cgi parameters</option>
                 <option value="/medusade-cgi/cgicatch">catch cgi parameters</option>
+                <option value=""></option>
+                <option value="/medusade-http/http">http parameters</option>
+                <option value="/medusade-http/httpcatch">catch http parameters</option>
+                <option value=""></option>
+                <option value="../templates/t/t/parameters.t">t parameters</option>
+                <option value="../templates/t/t/functions.t">t functions</option>
                 </select><br/>
                 Method: <select name="FormMethod">
                 <option value="POST">POST</option>
                 <option value="GET">GET</option>
                 <option value=""></option>
                 </select><br/>
-
+    
                 <br/>
                 <input type="submit" name="submit" value="submit"/><br/>
             </div>

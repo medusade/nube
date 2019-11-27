@@ -15,10 +15,10 @@
 === or otherwise) arising in any way out of the use of this software, 
 === even if advised of the possibility of such damage.
 ===
-===   File: Medusade-home.html
+===   File: Medusade-create-css.html.html
 ===
 === Author: $author$
-===   Date: 11/24/2019
+===   Date: 11/27/2019
 =====================================================================
 -->
 <html>
@@ -33,7 +33,7 @@
         === title
         =====================================================================
         -->
-        <title>Medusade - Home</title>
+        <title>Medusade - Create .css File</title>
     
         <!--
         =====================================================================
@@ -42,7 +42,9 @@
         -->
         <link rel="stylesheet" type="text/css" href="../css/Medusade.css"></link>
         <link rel="stylesheet" type="text/css" href="../css/Medusade-header.css"></link>
-        <link rel="stylesheet" type="text/css" href="../css/Medusade-body-logo.css"></link>
+        <link rel="stylesheet" type="text/css" href="../css/Medusade-dropdown.css"></link>
+        <link rel="stylesheet" type="text/css" href="../css/Medusade-menubar.css"></link>
+        <link rel="stylesheet" type="text/css" href="../css/Medusade-logo.css¨ñ_"></link>
         <style type="text/css">
         </style>
     
@@ -53,7 +55,6 @@
         -->
         <script type="text/javascript" src="../js/Medusade.js"></script>
         <script type="text/javascript">
-            onLocationInit('Medusade.html', 'Medusade-home.html');
         </script>
     </head>
     <!--
@@ -62,39 +63,44 @@
     =====================================================================
     -->
     <body class="body">
+        <!--
+        =====================================================================
+        === form
+        =====================================================================
+        -->
+        <form name="Form" method="POST" action="../templates/t/css/css.t"
+         onSubmit="return setFormSubmit(getFormValue2('FormTemplate','FormAction','Form'),getFormValue('FormMethod','Form'),'Form')">
+            <div class="form">
 
-        <!--
-        =====================================================================
-        === header
-        =====================================================================
-        -->
-        <div id="includeHeader" include="Medusade-header.html">
-            <script>includeHTML('includeHeader');</script>
-        </div>
-        <!--
-        =====================================================================
-        === dropdown
-        =====================================================================
-        -->
-        <div id="includeDropdown" include="Medusade-dropdown.html">
-            <script>includeHTML('includeDropdown');</script>
-        </div>
-        <!--
-        =====================================================================
-        === logo
-        =====================================================================
-        -->
-        <table class="body-logo">
-            <tr><td>
-                <table class="body-logo-icon" onclick="onClickSelfLocation(event)">
-                    <tr><td class="body-logo-icon-image">
-                        <table class="body-logo-label">
-                            <tr><td class="body-logo-label-text">MEDUSA</td></tr>
-                        </table>
-                    </td></tr>
-                </table>
-            </td></tr>
-        </table>
-
+                <br/>
+                Content-Type: <select name="content_type">
+                <option value="text/plain">text</option>
+                <option value="text/html">html</option>
+                <option value="text/xml">xml</option>
+                <option value="application/json">json</option>
+                <option value="application/javascript">javascript</option>
+                <option value=""></option>
+                </select><br/>
+                Action: <select name="FormAction">
+                <option value="../templates/t/css/css.t">Create .css File</option>
+                <option value=""></option>
+                <option value="../templates/t/t/parameters.t">parameters</option>
+                <option value=""></option>
+                <option value="/medusade-cgi/cgi">cgi parameters</option>
+                <option value="/medusade-cgi/cgicatch">catch cgi parameters</option>
+                <option value=""></option>
+                <option value="/medusade-http/http">http parameters</option>
+                <option value="/medusade-http/httpcatch">catch http parameters</option>
+                </select><br/>
+                Method: <select name="FormMethod">
+                <option value="POST">POST</option>
+                <option value="GET">GET</option>
+                <option value=""></option>
+                </select><br/>
+    
+                <br/>
+                <input type="submit" name="submit" value="submit"/><br/>
+            </div>
+        </form>
     </body>
 </html>
