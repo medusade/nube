@@ -64,6 +64,15 @@
     =====================================================================
     -->
     <body class="body">
+
+        <!--
+        =====================================================================
+        === logo
+        =====================================================================
+        -->
+        <div id="includeLogo" include="Medusade-body-logo.html">
+            <script>includeHTML('includeLogo');</script>
+        </div>
         <!--
         =====================================================================
         === header
@@ -86,27 +95,13 @@
         =====================================================================
         -->
         <ul class="menubar">
-            <li><a location="Medusade-create-qtcreator.html" onclick="onItemClick(event)">Create Qtcreator Project</a></li>
-            <li><a location="Medusade-create-makefile.html" onclick="onItemClick(event)">Create Makefile project</a></li>
-            <li><a location="Medusade-create-html.html" onclick="onItemClick(event)">Create .html file</a></li>
-            <li><a location="Medusade-create-t.html" onclick="onItemClick(event)">Create .t file</a></li>
+            <li><a href="Medusade-create-qtcreator.html" onclick="onItemClick(event)">Create Qtcreator Project</a></li>
+            <li><a href="Medusade-create-makefile.html" onclick="onItemClick(event)">Create Makefile project</a></li>
+            <li><a href="Medusade-create-vstudio.html" onclick="onItemClick(event)">Create VisualStudio Project</a></li>
+            <li><a href="Medusade-create-t.html" onclick="onItemClick(event)">Create .t file</a></li>
+            <li><a href="Medusade-home.html" onclick="onItemClick(event)">Home</a></li>
         </ul>
-        <!--
-        =====================================================================
-        === logo
-        =====================================================================
-        -->
-        <table class="body-logo">
-            <tr><td>
-                <table class="body-logo-icon" onclick="onClickSelfLocation(event)">
-                    <tr><td class="body-logo-icon-image">
-                        <table class="body-logo-label">
-                            <tr><td class="body-logo-label-text">MEDUSA</td></tr>
-                        </table>
-                    </td></tr>
-                </table>
-            </td></tr>
-        </table>
+
         <!--
         =====================================================================
         === form
@@ -115,6 +110,61 @@
         <form name="Form" method="POST" action="../templates/t/qtcreator/qtcreator-pro.t"
          onSubmit="return setFormSubmit(getFormValue2('FormTemplate','FormAction','Form'),getFormValue('FormMethod','Form'),'Form')">
             <div class="form">
+
+                File: <input name="Name" value=""/>
+                <input name="is_Name" value="no" type="checkbox" unchecked="checked">no</input><br/>
+                Template: <select name="FormTemplate">
+                <option value="../templates/t/qtcreator/qtcreator.t">QtCreator project</option>
+                <option value="../templates/t/qtcreator/os-qtcreator.t">Os QtCreator project</option>
+                <option value="../templates/t/qtcreator/build-qtcreator.t">Build QtCreator project</option>
+                <option value=""></option>
+                <option value="../templates/t/qtcreator/lib-qtcreator.t">library QtCreator project</option>
+                <option value="../templates/t/qtcreator/os-lib-qtcreator.t">Os library QtCreator project</option>
+                <option value="../templates/t/qtcreator/lib-qtcreator-build-config.t">library QtCreator build config</option>
+                <option value=""></option>
+                <option value="../templates/t/qtcreator/exe-qtcreator.t">executable QtCreator project</option>
+                <option value="../templates/t/qtcreator/os-exe-qtcreator.t">Os executable QtCreator project</option>
+                <option value="../templates/t/qtcreator/exe-qtcreator-build-config.t">executable QtCreator build config</option>
+                <option value=""></option>
+                <option value="../templates/t/qtcreator/slib-qtcreator.t">shared library QtCreator project</option>
+                <option value="../templates/t/qtcreator/os-slib-qtcreator.t">Os shared library QtCreator project</option>
+                <option value="../templates/t/qtcreator/slib-qtcreator-build-config.t">shared library QtCreator build config</option>
+                <option value=""></option>
+                <option value="../templates/t/qtcreator/kmod-qtcreator.t">kernel module QtCreator project</option>
+                <option value="../templates/t/qtcreator/os-kmod-qtcreator.t">Os kernel module QtCreator project</option>
+                <option value="../templates/t/qtcreator/kmod-qtcreator-build-config.t">kernel module QtCreator build config</option>
+                <option value=""></option>
+                <option value="/medusade-cgi/cgi">cgi parameters</option>
+                <option value="/medusade-cgi/cgicatch">catch cgi parameters</option>
+                <option value=""></option>
+                <option value="/medusade-http/http">http parameters</option>
+                <option value="/medusade-http/httpcatch">catch http parameters</option>
+                <option value=""></option>
+                <option value="../templates/t/t/parameters.t">t parameters</option>
+                <option value="../templates/t/t/functions.t">t functions</option>
+                </select>
+                <input name="is_FormTemplate" value="no" type="checkbox" unchecked="checked">no</input><br/>
+
+                <br/>
+                Depends: <input name="Depends" value="depends"/>
+                <input name="is_Depends" value="no" type="checkbox" unchecked="checked">no</input><br/>
+                Framework: <input name="Framework" value="framework"/>
+                <input name="is_Framework" value="no" type="checkbox" unchecked="checked">no</input><br/>
+                Target: <input name="Target" value="target"/>
+                <input name="is_Target" value="no" type="checkbox" unchecked="checked">no</input><br/>
+                Source: <select name="Source">
+                    <option value="source">source</option>
+                    <option value="src">src</option>
+                    <option value=""></option>
+                </select>
+                <input name="is_Source" value="no" type="checkbox" unchecked="checked">no</input><br/>
+                Include: <select name="Include">
+                    <option value="include">include</option>
+                    <option value="inc">inc</option>
+                    <option value=""></option>
+                </select>
+                <input name="is_Include" value="no" type="checkbox" unchecked="checked">no</input><br/>
+
 
                 <br/>
                 Content-Type: <select name="content_type">
@@ -130,6 +180,12 @@
                 <option value=""></option>
                 <option value="/medusade-cgi/cgi">cgi parameters</option>
                 <option value="/medusade-cgi/cgicatch">catch cgi parameters</option>
+                <option value=""></option>
+                <option value="/medusade-http/http">http parameters</option>
+                <option value="/medusade-http/httpcatch">catch http parameters</option>
+                <option value=""></option>
+                <option value="../templates/t/t/parameters.t">t parameters</option>
+                <option value="../templates/t/t/functions.t">t functions</option>
                 </select><br/>
                 Method: <select name="FormMethod">
                 <option value="POST">POST</option>

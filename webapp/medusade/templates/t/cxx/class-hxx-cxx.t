@@ -93,14 +93,14 @@
 %namet,%(%else-then(%_Namet%,%(%tolower(%Namet%)%)%)%)%,%
 %is_timplements,%(%else-then(%is_timplements%,%(%is_TImplements%)%)%)%,%
 %timplements,%(%else-then(%if-no(%is_timplements%,,%(%timplements%)%)%,%(%if-no(%is_timplements%,,%(%
-%%Implements%%
+%%if-no(%is_template%,%Implements%,%if-no(%is_implements%,,%(TImplements)%)%)%%
 %)%)%)%)%)%,%
 %TImplements,%(%else-then(%if-no(%is_timplements%,,%(%TImplements%)%)%,%(%timplements%)%)%)%,%
 %TIMPLEMENTS,%(%else-then(%TIMPLEMENTS%,%(%toupper(%TImplements%)%)%)%)%,%
 %timplements,%(%else-then(%_TImplements%,%(%tolower(%TImplements%)%)%)%)%,%
 %is_textends,%(%else-then(%is_textends%,%(%is_TExtends%)%)%)%,%
 %textends,%(%else-then(%if-no(%is_textends%,,%(%textends%)%)%,%(%if-no(%is_textends%,,%(%
-%%Extends%%
+%%if-no(%is_template%,%Extends%,%if-no(%is_extends%,,%(TExtends)%)%)%%
 %)%)%)%)%)%,%
 %TExtends,%(%else-then(%if-no(%is_textends%,,%(%TExtends%)%)%,%(%textends%)%)%)%,%
 %TEXTENDS,%(%else-then(%TEXTENDS%,%(%toupper(%TExtends%)%)%)%)%,%

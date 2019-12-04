@@ -64,6 +64,15 @@
     =====================================================================
     -->
     <body class="body">
+
+        <!--
+        =====================================================================
+        === logo
+        =====================================================================
+        -->
+        <div id="includeLogo" include="Medusade-body-logo.html">
+            <script>includeHTML('includeLogo');</script>
+        </div>
         <!--
         =====================================================================
         === header
@@ -88,18 +97,12 @@
         <ul class="menubar">
             <li><a href="Medusade-create-t.html" onclick="onItemClick(event,'myDropdown')">Create .t File</a></li>
             <li><a href="Medusade-create-html.html" onclick="onItemClick(event,'myDropdown')">Create .html File</a></li>
-            <li><a href="Medusade-create-makefile.html" onclick="onItemClick(event,'myDropdown')">Create Makefile Project</a></li>
-            <li><a href="Medusade-create-qtcreator.html" onclick="onItemClick(event)">Create Qtcreator Project</a></li>
+            <li><a href="Medusade-create-css.html" onclick="onItemClick(event,'myDropdown')">Create .css file</a></li>
+            <li><a href="Medusade-create-js.html" onclick="onItemClick(event)">Create .js file</a></li>
+            <li><a href="Medusade-create-xml.html" onclick="onItemClick(event,'myDropdown')">Create .xml File</a></li>
+            <li><a href="Medusade-create-xslt.html" onclick="onItemClick(event,'myDropdown')">Create .xslt File</a></li>
             <li><a href="Medusade-home.html" onclick="onItemClick(event)">Home</a></li>
         </ul>
-        <!--
-        =====================================================================
-        === logo
-        =====================================================================
-        -->
-        <div id="includeLogo" include="Medusade-body-logo.html">
-            <script>includeHTML('includeLogo');</script>
-        </div>
 
         <!--
         =====================================================================
@@ -109,7 +112,7 @@
         <form name="Form" method="POST" action="../templates/t/t/t.t"
          onSubmit="return setFormSubmit(getFormValue2('FormTemplate','FormAction','Form'),getFormValue('FormMethod','Form'),'Form')">
             <div class="form">
-                File: <input name="Name" value="Create"></input>
+                File: <input name="Name" value="t"></input>
                 <input type="checkbox" name="is_Name" value="no" unchecked="checked">no</input><br>
                 Template: <select name="FormTemplate">
                     <option value="../templates/t/t/t.t">Create .t File</option>
@@ -119,6 +122,9 @@
                     <option value=""></option>
                     <option value="/medusade-http/http">http parameters</option>
                     <option value="/medusade-http/httpcatch">catch http parameters</option>
+                    <option value=""></option>
+                    <option value="../templates/t/t/parameters.t">t parameters</option>
+                    <option value="../templates/t/t/functions.t">t functions</option>
                 </select>
                 <input type="checkbox" name="is_FoprmTemplate" value="no" unchecked="checked">no</input><br>
                 <br/>
@@ -144,6 +150,9 @@
                 <option value=""></option>
                 <option value="/medusade-http/http">http parameters</option>
                 <option value="/medusade-http/httpcatch">catch http parameters</option>
+                <option value=""></option>
+                <option value="../templates/t/t/parameters.t">t parameters</option>
+                <option value="../templates/t/t/functions.t">t functions</option>
                 </select><br/>
                 Method: <select name="FormMethod">
                 <option value="POST">POST</option>

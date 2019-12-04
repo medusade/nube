@@ -55,6 +55,7 @@
         -->
         <script type="text/javascript" src="../js/Medusade.js"></script>
         <script type="text/javascript">
+            onLocationInit('Medusade-home.html', 'Medusade-create-css.html');
         </script>
     </head>
     <!--
@@ -63,6 +64,15 @@
     =====================================================================
     -->
     <body class="body">
+
+        <!--
+        =====================================================================
+        === logo
+        =====================================================================
+        -->
+        <div id="includeLogo" include="Medusade-body-logo.html">
+            <script>includeHTML('includeLogo');</script>
+        </div>
         <!--
         =====================================================================
         === header
@@ -93,14 +103,7 @@
             <li><a href="Medusade-create-t.html" onclick="onItemClick(event)">Create .t file</a></li>
             <li><a href="Medusade-home.html" onclick="onItemClick(event)">Home</a></li>
         </ul>
-        <!--
-        =====================================================================
-        === logo
-        =====================================================================
-        -->
-        <div id="includeLogo" include="Medusade-body-logo.html">
-            <script>includeHTML('includeLogo');</script>
-        </div>
+
         <!--
         =====================================================================
         === form

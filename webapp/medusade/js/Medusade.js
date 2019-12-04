@@ -220,7 +220,7 @@ function onDropdownInit(dropdown) {
     thisDropdown = dropdown;
     initDropdown = true;
 }
-function onDropdownClick(dropdown) {
+function onDropdownClick(dropdown, event) {
     if (!dropdown) { dropdown = "myDropdown"; }
     if (dropdown) {
         var x = document.getElementById(dropdown);
@@ -230,6 +230,15 @@ function onDropdownClick(dropdown) {
                 x.style.display = "block";
             } else {
                 x.style.display = "none";
+            }
+        }
+    }
+    if (event) {
+        if (event.stopPropagation) {
+            event.stopPropagation();
+        } else {
+            if (window.event) {
+                window.event.cancelBubble = true;
             }
         }
     }

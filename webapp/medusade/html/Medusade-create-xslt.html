@@ -67,6 +67,14 @@
 
         <!--
         =====================================================================
+        === logo
+        =====================================================================
+        -->
+        <div id="includeLogo" include="Medusade-body-logo.html">
+            <script>includeHTML('includeLogo');</script>
+        </div>
+        <!--
+        =====================================================================
         === header
         =====================================================================
         -->
@@ -95,14 +103,6 @@
             <li><a href="Medusade-create-t.html" onclick="onItemClick(event)">Create .t file</a></li>
             <li><a href="Medusade-home.html" onclick="onItemClick(event)">Home</a></li>
         </ul>
-        <!--
-        =====================================================================
-        === logo
-        =====================================================================
-        -->
-        <div id="includeLogo" include="Medusade-body-logo.html">
-            <script>includeHTML('includeLogo');</script>
-        </div>
 
         <!--
         =====================================================================
@@ -117,6 +117,15 @@
                 <input name="is_File" value="no" type="checkbox" unchecked="checked">no</input><br/>
                 Template: <select name="Template">
                 <option value="../templates/t/xml/xml.t">Create .xslt File</option>
+                <option value=""></option>
+                <option value="/medusade-cgi/cgi">cgi parameters</option>
+                <option value="/medusade-cgi/cgicatch">catch cgi parameters</option>
+                <option value=""></option>
+                <option value="/medusade-http/http">http parameters</option>
+                <option value="/medusade-http/httpcatch">catch http parameters</option>
+                <option value=""></option>
+                <option value="../templates/t/t/parameters.t">t parameters</option>
+                <option value="../templates/t/t/functions.t">t functions</option>
                 </select>
                 <input name="is_Template" value="no" type="checkbox" unchecked="checked">no</input><br/>
 

@@ -197,14 +197,16 @@
 %InputName,%(%else-then(%if-no(%is_inputname%,,%(%InputName%)%)%,%(%inputname%)%)%)%,%
 %inputvalue,%(%else-then(%if-no(%is_inputvalue%,,%(%inputvalue%)%)%,%(%if-no(%is_inputvalue%,,%(%right-of-left(%Input%,=)%)%)%)%)%)%,%
 %InputValue,%(%else-then(%if-no(%is_inputvalue%,,%(%InputValue%)%)%,%(%inputvalue%)%)%)%,%
-%optionvalue,%(%else-then(%if-no(%is_optionvalue%,,%(%optionvalue%)%)%,%(%if-no(%is_optionvalue%,,%(%left(%InputValue%,:)%)%)%)%)%)%,%
-%OptionValue,%(%else-then(%if-no(%is_optionvalue%,,%(%OptionValue%)%)%,%(%optionvalue%)%)%)%,%
-%optionlabel,%(%else-then(%if-no(%is_optionlabel%,,%(%optionlabel%)%)%,%(%if-no(%is_optionlabel%,,%(%right-of-left(%InputValue%,:)%%)%)%)%)%)%,%
-%OptionLabel,%(%else-then(%if-no(%is_optionlabel%,,%(%OptionLabel%)%)%,%(%optionlabel%)%)%)%,%
 %%(
                 %InputName%: <select name="%InputName%">
-                <option value="%OptionValue%">%OptionLabel%</option>
-                </select>
+%parse(%InputValue%,%(,)%,,,,%(%
+%%with(%
+%optionvalue,%(%else-then(%if-no(%is_optionvalue%,,%(%optionvalue%)%)%,%(%if-no(%is_optionvalue%,,%(%left(%Option%,:)%)%)%)%)%)%,%
+%OptionValue,%(%else-then(%if-no(%is_optionvalue%,,%(%OptionValue%)%)%,%(%optionvalue%)%)%)%,%
+%optionlabel,%(%else-then(%if-no(%is_optionlabel%,,%(%optionlabel%)%)%,%(%if-no(%is_optionlabel%,,%(%right-of-left(%Option%,:)%%)%)%)%)%)%,%
+%OptionLabel,%(%else-then(%if-no(%is_optionlabel%,,%(%OptionLabel%)%)%,%(%optionlabel%)%)%)%,%
+%%(                <option value="%OptionValue%">%OptionLabel%</option>
+)%)%)%,Option)%                </select>
                 <input name="is_%InputName%" value="no" type="checkbox" unchecked="checked">no</input><br/>)%)%%
 %)%,Input)%
 

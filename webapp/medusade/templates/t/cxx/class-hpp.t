@@ -22,7 +22,9 @@
 %include_path,%(%else-then(%include_path%,%(%filepath(%input%)%)%)%)%,%
 %%(%
 %%if(%Class%,%(
-/// class %Namet%
+/// class %Namet%%
+%%if-no(%is_template%,,%(
+template <%Template%%then-if(%Extends%,%(%if(%Template%,%(, )%)%class TExtends = )%)%%then-if(%Implements%,%(%if(%Template%%Extends%,%(, )%)%class TImplements = )%)%>)%)%
 class exported %Namet%%if(%Implements%%Extends%,%(: %
 %%then-if(%TImplements%,%(virtual %Access% )%)%%
 %%then-if(%TExtends%,%(%if(%Implements%,%(, )%)%%Access% )%)%%
@@ -30,11 +32,11 @@ class exported %Namet%%if(%Implements%%Extends%,%(: %
 %Access%:%
 %%if(%Implements%,%(
     typedef %TImplements% implements;)%)%%
-%%if(%TExtends%,%(
+%%if(%Extends%,%(
     typedef %TExtends% extends;)%)%
     typedef %Namet% derives;
 %if(%Coopy_constructor%%Constructor%%Destructor%,%(
-    /// constructor / destructor)%)%%
+    /// constructor / destructor%
 %%if(%Copy_constructor%,%(%if(%Private_copy_constructor%,,%(
     %if(%Explicit_copy_constructor%,explicit )%%Namet%%(()%const %Namet%& copy%())%%if(%Extends%,%(: extends%(()%copy%())%)%)% {
     })%)%)%)%%
@@ -47,7 +49,7 @@ class exported %Namet%%if(%Implements%%Extends%,%(: %
 %%if(%Private_copy_constructor%%Private_constructor%%Private_destructor%,%(
 private:%
 %%if(%Copy_constructor%,%(%if(%Private_copy_constructor%,%(
-    %if(%Explicit_copy_constructor%,explicit )%%Namet%%(()%const %Namet%& copy%())%%if(%Extends%,%(: extends%(()%copy%())%)% {
+    %if(%Explicit_copy_constructor%,explicit )%%Namet%%(()%const %Namet%& copy%())%%if(%Extends%,%(: extends%(()%copy%())%)%)% {
     })%)%)%)%%
 %%if(%Constructor%,%(%if(%Private_constructor%,%(
     %if(%Explicit_constructor%,explicit )%%Namet%%(()%%())% {
@@ -56,10 +58,11 @@ private:%
     %if(%Virtual_destructor%,virtual )%~%Namet%%(()%%())% {
     })%)%)%)%%
 %
-%Access%:)%)%%
+%Access%:%
+%)%)%%
+%)%)%%
 %
 }; /// class %Namet%
-%if-no(%is_template%,,%(
-typedef %Namet%<> %Name%;
-)%)%)%)%%
+%if-no(%is_template%,,%(typedef %Namet%<> %Name%;
+)%)%%
 %)%)%

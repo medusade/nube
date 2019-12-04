@@ -26,7 +26,7 @@
 %NAMESPACE,%(%else-then(%NAMESPACE%,%(%toupper(%Namespace%)%)%)%)%,%
 %namespace,%(%else-then(%_Namespace%,%(%tolower(%Namespace%)%)%)%)%,%
 %is_ifndef,%(%else-then(%is_ifndef%,%(%is_Ifndef%)%)%)%,%
-%ifndef,%(%else-then(%if-no(%is_ifndef%,,%(%ifndef%)%)%,%(%if-no(%is_ifndef%,,%(xos/base)%)%)%)%)%,%
+%ifndef,%(%else-then(%if-no(%is_ifndef%,,%(%ifndef%)%)%,%(%if-no(%is_ifndef%,,%(%else-then(%Namespace%,xos/base)%)%)%)%)%)%,%
 %Ifndef,%(%else-then(%if-no(%is_ifndef%,,%(%Ifndef%)%)%,%(%ifndef%)%)%)%,%
 %Ifndef,%(%parse(%Ifndef%,/,,_)%)%,%
 %IFNDEF,%(%else-then(%IFNDEF%,%(%toupper(%Ifndef%)%)%)%)%,%
@@ -84,6 +84,21 @@
 %Ifndef_end,%(%else-then(%if-no(%is_ifndef_end%,,%(%Ifndef_end%)%)%,%(%ifndef_end%)%)%)%,%
 %IFNDEF_END,%(%else-then(%IFNDEF_END%,%(%toupper(%Ifndef_end%)%)%)%)%,%
 %ifndef_end,%(%else-then(%_Ifndef_end%,%(%tolower(%Ifndef_end%)%)%)%)%,%
+%is_ifndef_directory,%(%else-then(%is_ifndef_directory%,%(%is_Ifndef_directory%)%)%)%,%
+%ifndef_directory,%(%else-then(%if-no(%is_ifndef_directory%,,%(%ifndef_directory%)%)%,%(%if-no(%is_ifndef_directory%,,%(%
+%%parse(%Ifndef%,_,,/,%(%Ifndef%)%,Ifndef)%%
+%)%)%)%)%)%,%
+%Ifndef_directory,%(%else-then(%if-no(%is_ifndef_directory%,,%(%Ifndef_directory%)%)%,%(%ifndef_directory%)%)%)%,%
+%IFNDEF_DIRECTORY,%(%else-then(%IFNDEF_DIRECTORY%,%(%toupper(%Ifndef_directory%)%)%)%)%,%
+%ifndef_directory,%(%else-then(%_Ifndef_directory%,%(%tolower(%Ifndef_directory%)%)%)%)%,%
+%is_ifndef_include,%(%else-then(%is_ifndef_include%,%(%is_Ifndef_include%)%)%)%,%
+%ifndef_include,%(%else-then(%if-no(%is_ifndef_include%,,%(%ifndef_include%)%)%,%(%if-no(%is_ifndef_include%,,%(%
+%#include "%if-then(%Ifndef_directory%,/)%%Base%.%Hxx%"
+%
+%)%)%)%)%)%,%
+%Ifndef_include,%(%else-then(%if-no(%is_ifndef_include%,,%(%Ifndef_include%)%)%,%(%ifndef_include%)%)%)%,%
+%IFNDEF_INCLUDE,%(%else-then(%IFNDEF_INCLUDE%,%(%toupper(%Ifndef_include%)%)%)%)%,%
+%ifndef_include,%(%else-then(%_Ifndef_include%,%(%tolower(%Ifndef_include%)%)%)%)%,%
 %is_includes,%(%else-then(%is_includes%,%(%is_Includes%)%)%)%,%
 %includes,%(%else-then(%if-no(%is_includes%,,%(%includes%)%)%,%(%if-no(%is_includes%,,%(%
 %%parse(%Include%,;,,,,%(#include "%include%"
