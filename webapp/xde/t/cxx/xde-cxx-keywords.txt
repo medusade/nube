@@ -1,0 +1,5 @@
+class
+typename
+void
+signed
+unsigned
