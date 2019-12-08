@@ -1,0 +1,139 @@
+<!--========================================================================-->
+<!-- Copyright (c) 1988-2014 $organization$                                 -->
+<!--                                                                        -->
+<!-- This software is provided by the author and contributors ``as is''     -->
+<!-- and any express or implied warranties, including, but not limited to,  -->
+<!-- the implied warranties of merchantability and fitness for a particular -->
+<!-- purpose are disclaimed. In no event shall the author or contributors   -->
+<!-- be liable for any direct, indirect, incidental, special, exemplary,    -->
+<!-- or consequential damages (including, but not limited to, procurement   -->
+<!-- of substitute goods or services; loss of use, data, or profits; or     -->
+<!-- business interruption) however caused and on any theory of liability,  -->
+<!-- whether in contract, strict liability, or tort (including negligence   -->
+<!-- or otherwise) arising in any way out of the use of this software,      -->
+<!-- even if advised of the possibility of such damage.                     -->
+<!--                                                                        -->
+<!--   File: wstest.html                                                    -->
+<!--                                                                        -->
+<!-- Author: $author$                                                       -->
+<!--   Date: 6/14/2014                                                      -->
+<!--========================================================================-->
+<html>
+    <!--========================================================================-->
+    <!--                                                                        -->
+    <!-- head                                                                   -->
+    <!--                                                                        -->
+    <!--========================================================================-->
+    <head>
+        <!--========================================================================-->
+        <!--                                                                        -->
+        <!-- title                                                                  -->
+        <!--                                                                        -->
+        <!--========================================================================-->
+        <title>Websockets test application</title>
+
+        <!--========================================================================-->
+        <!--                                                                        -->
+        <!-- style                                                                  -->
+        <!--                                                                        -->
+        <!--========================================================================-->
+        <style type="text/css">
+        </style>
+
+        <!--========================================================================-->
+        <!--                                                                        -->
+        <!-- script                                                                 -->
+        <!--                                                                        -->
+        <!--========================================================================-->
+        <script type="text/javascript" src="../../thirdparty/ajaxtoolbox/AJAXRequestWithTry.js"></script>
+        <script type="text/javascript" src="../../javascript/RestApp.js"></script>
+        <script type="text/javascript">
+        var wsConnected;
+        function wsSend(ws,message) {
+            if (ws) {
+                if (message) {
+                    ws.send(message);
+                    return true;
+                }
+            }
+            return false;
+        }
+        function wsDisconnect(ws) {
+            if (ws) {
+                ws.close();
+                return true;
+            }
+            return false;
+        }
+        function wsConnect(scheme, host, port, path, protocol, callback) {
+            var ws;
+            var url;
+
+            if (("WebSocket" in window)) {
+                if (!(scheme)) scheme = wsEventCallbackScheme;
+
+                if (!(host)) host = wsEventCallbackHost;
+
+                if (!(port)) port = wsEventCallbackPort;
+
+                if (!(callback)) callback = wsOnMessage;
+
+                url = scheme+"://"+host+":"+port;
+
+                if ((path) || (path != ''))
+                    url = url+'/'+path;
+
+                if ((protocol) || (protocol != ''))
+                    ws = new WebSocket(url, protocol);
+                else ws = new WebSocket(url);
+
+                if ((ws)) {
+                    ws.onopen = function() {
+                        if ((wsOnOpenAlert)) {
+                            alert("Connection opened...");
+                        }
+                    };
+                    ws.onclose = function() {
+                        if ((wsOnCloseAlert)) {
+                            alert("Connection closed...");
+                        }
+                    };
+                    ws.onmessage = callback;
+                }
+            } else {
+                if ((wsUnsupportedAlert)) {
+                    alert("WebSocket not supported");
+                }
+            }
+            return ws;
+        }
+        </script>
+    </head>
+    <!--========================================================================-->
+    <!--                                                                        -->
+    <!-- body                                                                   -->
+    <!--                                                                        -->
+    <!--========================================================================-->
+    <body onLoad="getFormValueAlert=false;setFormActionAlert=false;">
+        <h2>Websockets test application</h2>
+        <form name="form" method="" action="" onsubmit="">
+            <input name="scheme" value="ws">://<input name="host" value="localhost">:<input name="port" value="8080">/<input name="path" value=""><br/>
+            protocol <input name="protocol" value="">message <input name="message" value=""><br>
+            <input type="button" name="connect" value="connect" onclick="wsConnected=wsConnect(getFormValue('scheme'),getFormValue('host'),getFormValue('port'),getFormValue('path'),getFormValue('protocol'))">
+            <input type="button" name="disconnect" value="disconnect" onclick="if(wsDisconnect(wsConnected))wsConnected=null;">
+            <input type="button" name="send" value="send" onclick="wsSend(wsConnected,getFormValue('message'))">
+            <br>
+        </form>
+
+        <form name="form2" method="" action="" onsubmit="setFormMethod(getFormValue('method','form2'),'form2');return setFormAction(getFormValue('scheme','form2')+'://'+getFormValue('host','form2')+':'+getFormValue('port','form2')+'/'+getFormValue('path','form2')+'?'+getFormValue('query','form2')+'#'+getFormValue('fragment','form2'),'form2');">
+            <input name="scheme" value="http">://<input name="host" value="localhost">:<input name="port" value="8080">/<br><input name="path" value="hello">?<input name="query" value="">#<input name="fragment" value=""><br>
+            method <input type="radio" name="method" value="GET" checked>GET
+            <input type="radio" name="method" value="POST">POST
+            <input type="radio" name="method" value="PUT">PUT
+            <input type="radio" name="method" value="DELETE">DELETE
+            <input type="radio" name="method" value="OPTIONS">OPTIONS
+            <input type="radio" name="method" value="HEAD">HEAD<br>
+            <input type="submit" name="submit" value="submit"><br>
+        </form>
+    </body>
+</html>
