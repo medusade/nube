@@ -280,6 +280,8 @@ window.onclick = function(event) {
         && (!event.target.matches('.dropdown-button')) 
         && (!event.target.matches('.dropdown-bars')) 
         && (!event.target.matches('.dropdown-bar'))
+        && (!event.target.matches('.dropdown-content'))
+        && (!event.target.matches('.dropdown-item'))
         && (thisDropdown)) {
         var x = document.getElementById(thisDropdown);
         if (x.style.display === "block") {
