@@ -1,0 +1,84 @@
+/*
+**********************************************************************
+* Copyright (c) 1988-2019 $organization$     
+*
+* This software is provided by the author and contributors ``as is'' 
+* and any express or implied warranties, including, but not limited to, 
+* the implied warranties of merchantability and fitness for a particular 
+* purpose are disclaimed. In no event shall the author or contributors 
+* be liable for any direct, indirect, incidental, special, exemplary, 
+* or consequential damages (including, but not limited to, procurement 
+* of substitute goods or services; loss of use, data, or profits; or 
+* business interruption) however caused and on any theory of liability, 
+* whether in contract, strict liability, or tort (including negligence 
+* or otherwise) arising in any way out of the use of this software, 
+* even if advised of the possibility of such damage.
+*
+*   File: medusade-sspace.css
+*
+* Author: $author$           
+*   Date: 4/10/2019
+**********************************************************************
+*/
+.medusade-body-table {
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    border-spacing: 0px 0px;
+    background-color: black;
+}
+.medusade-body-td-table {
+    width: 400px;
+    height: 400px;
+    margin: auto;
+    padding: 0px;
+    border-spacing: 0px 0px;
+}
+.medusade-body-td-table-td { 
+    background-image: url('../images/medusade-sspace.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 400px 400px;
+    vertical-align: bottom;
+}
+.medusade-table {
+    width: 600px;
+    height: 550px;
+    margin: auto;
+    padding: 0px;
+    border-spacing: 0px 0px;
+    background-color: black;
+}
+.medusade-td-table {
+    width: 300px;
+    height: 100%;
+    margin: auto;
+    padding: 0px;
+    border-spacing: 0px 0px;
+}
+.medusade-td-table-td { 
+    background-image: url('../images/medusade-sspace.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 300px 300px;
+    vertical-align: bottom;
+}
+.medusade-td-table-td-table {
+    width: 100%;
+    padding: 0px;
+    border-spacing: 0px 0px;
+}
+.medusade-td-table-td-over {
+    opacity: 0;
+    color: white;
+    transition: .5s ease;
+    font-size: 40px;
+    font-family: Arial;
+    text-align: center;
+}
+.medusade-td-table:hover .medusade-td-table-td-over {
+    opacity: 1;
+}
+.medusade-body-td-table:hover .medusade-td-table-td-over {
+    opacity: 1;
+}
